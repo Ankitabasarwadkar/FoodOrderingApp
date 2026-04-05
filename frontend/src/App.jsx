@@ -1,12 +1,14 @@
-import { Routes, Route, Navigate } from "react-router"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LandingPage from "./pages/LandingPage";
 
-import Home from "./pages/Home"
-
-function App() {return (
-<Routes>
-        <Route path="/home" element={<Home />} />
-</Routes>
-)
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
