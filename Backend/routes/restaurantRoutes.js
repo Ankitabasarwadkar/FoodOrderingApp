@@ -1,10 +1,38 @@
 const express = require("express");
 const Restaurant = require("../models/Restaurant");
+const Food = require("../models/food");
 const result = require("../utils/result");
 
 const router = express.Router();
 
 // 🔥 GET ALL RESTAURANTS
+// router.get("/", async (req, res) => {
+//   try {
+//     const restaurants = await Restaurant.find();
+//     return res.send(result.createResult(null, restaurants));
+//   } catch (err) {
+//     return res.send(result.createResult(err.message));
+//   }
+// });
+
+router.get("/", async (req, res) => {
+  try {
+    const restaurants = await Restaurant.find();
+
+    const restaurantsWithImage = await Promise.all(
+      restaurants.map(async (restaurant) => {
+        const food = await Food.findOne({
+          restaurantId: restaurant._id,
+        });
+
+        return {
+          ...restaurant._doc,
+          image: food ? food.image : null,
+        };
+      })
+    );
+
+    return res.send(result.createResult(null, restaurantsWithImage));
 router.get("/", async (req, res) => {
   try {
     const restaurants = await Restaurant.find();

@@ -1,0 +1,38 @@
+.categories {
+  padding: 40px;
+  background: #fff;
+}
+
+.categories h2 {
+  margin-bottom: 20px;
+}
+
+.category-container {
+  display: flex;
+  gap: 20px;
+}
+
+.category-card {
+  background: #fff7f5;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  width: 120px;
+  transition: 0.3s;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-card img {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+.icon {
+  font-size: 40px;
+  color: #ff4d4f;
+  margin-bottom: 10px;
+}

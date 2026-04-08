@@ -34,7 +34,7 @@ router.post("/signin", async (req, res) => {
 
     // 5️⃣ Create JWT Token
     const token = jwt.sign(
-      {
+      { _id: user._id,
         email: user.email,
         mobileNo: user.mobileNo,
         role: user.role,
@@ -175,4 +175,33 @@ router.put("/change-password", async (req, res) => {
   }
 });
 
+
+router.get("/my-orders", async (req, res) => {
+  try {
+    const orders = await Order.find({ userId: req.user._id });
+
+    return res.send(result.createResult(null, orders));
+  } catch (err) {
+    return res.send(result.createResult(err.message));
+  }
+});
+
+router.get("/track/:orderId", async (req, res) => {
+  try {
+    const order = await Order.findById(req.params.orderId);
+
+    if (!order) {
+      return res.send(result.createResult("Order not found"));
+    }
+
+    return res.send(
+      result.createResult(null, {
+        status: order.orderStatus,
+        location: order.deliveryLocation,
+      })
+    );
+  } catch (err) {
+    return res.send(result.createResult(err.message));
+  }
+});
 module.exports = router;
