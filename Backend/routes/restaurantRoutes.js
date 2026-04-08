@@ -33,10 +33,15 @@ router.get("/", async (req, res) => {
     );
 
     return res.send(result.createResult(null, restaurantsWithImage));
+router.get("/", async (req, res) => {
+  try {
+    const restaurants = await Restaurant.find();
+    return res.send(result.createResult(null, restaurants));
   } catch (err) {
     return res.send(result.createResult(err.message));
   }
 });
+
 // 🔥 GET SINGLE RESTAURANT
 router.get("/:id", async (req, res) => {
   try {

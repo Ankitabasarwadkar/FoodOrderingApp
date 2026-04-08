@@ -2,6 +2,7 @@ const express = require("express");
 const Order = require("../models/order");
 const Food=require("../models/food")
 const Cart=require("../models/cart");
+   main
 const result = require("../utils/result");
 
 const router = express.Router();
@@ -154,6 +155,45 @@ router.post("/place", async (req, res) => {
     res.send(result.createResult(err.message));
   }
 });
+//placing order
+router.post("/", async (req, res) => {
+  try {
+    const {
+      restaurantId,
+      items,
+      totalAmount,
+      deliveryAddress,
+      paymentMethod,
+    } = req.body;
+
+    if (!restaurantId || !items || !totalAmount) {
+      return res.send(result.createResult("Required fields missing"));
+    }
+
+    const newOrder = new Order({
+      userId: req.user._id,
+      restaurantId,
+      items,
+      totalAmount,
+      deliveryAddress,
+      paymentMethod,
+      paymentStatus: "Pending",
+      orderStatus: "Placed",
+    });
+
+    const savedOrder = await newOrder.save();
+
+    return res.send(
+      result.createResult(null, {
+        message: "Order placed successfully",
+        order: savedOrder,
+      })
+    );
+  } catch (err) {
+    return res.send(result.createResult(err.message));
+  }
+});
+
 //get all orders
 router.get("/", async (req, res) => {
   try {
