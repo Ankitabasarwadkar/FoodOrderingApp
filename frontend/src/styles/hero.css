@@ -1,0 +1,48 @@
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 40px;
+  background: #fff7f5;
+}
+
+.hero-left {
+  width: 50%;
+}
+
+.hero-left h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.hero-left p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.order-btn {
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.menu-btn {
+  background: white;
+  border: 1px solid #ff4d4f;
+  color: #ff4d4f;
+  padding: 12px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.hero-right img {
+  width: 420px;
+}
