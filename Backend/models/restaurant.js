@@ -1,9 +1,12 @@
-const mongoose = require("mongoose");
-
 const restaurantSchema = new mongoose.Schema({
   name: String,
   location: String,
-  rating: Number
-}, { timestamps: true });
+  rating: Number,
 
-module.exports = mongoose.model("Restaurant", restaurantSchema);
+  latitude: Number,
+  longitude: Number,
+
+  avgDeliveryTime: Number, // minutes
+  deliveryFee: Number
+
+}, { timestamps: true });
