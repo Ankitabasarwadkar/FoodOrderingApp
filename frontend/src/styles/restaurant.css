@@ -1,76 +1,174 @@
-.featured {
-  padding: 30px 60px;
-}
-
-.featured h2 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-
-/* grid layout */
-.restaurant-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-/* card */
-.restaurant-card {
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer;
-  padding-bottom: 12px;
-  transition: 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.restaurant-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-}
-
-/* image */
-.restaurant-card img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-}
-
-/* title */
-.restaurant-card h3 {
-  font-size: 16px;
-  margin: 10px 12px 4px;
-  font-weight: 600;
-}
-
-/* cuisine */
-.restaurant-card p {
-  font-size: 13px;
-  color: #666;
-  margin: 0 12px;
-}
-
-/* rating + time */
-.info {
+/* navbar.css */
+.navbar {
   display: flex;
-  justify-content: space-between;
-  margin: 10px 12px 0;
-  font-size: 13px;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  position: relative;
+  z-index: 1000;
+}
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 24px;
+  color: #ff4a4a;
+  text-decoration: none;
+}
+
+.location-selector {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f7f7f7;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.location-icon {
+  color: #ff4a4a;
+}
+
+.location-text {
+  color: #555;
   font-weight: 500;
 }
 
-.info span:first-child {
-  background: #48c479;
-  color: white;
-  padding: 2px 6px;
-  border-radius: 4px;
+.location-name {
+  background: none;
+  border: none;
+  color: #222;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  text-decoration: underline;
 }
 
-/* responsive */
-@media (max-width: 768px) {
-  .featured {
-    padding: 20px;
-  }
+.location-name:hover {
+  color: #ff4a4a;
+}
+
+.navbar-center {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 600px;
+  padding: 8px 15px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: #ff4a4a;
+  box-shadow: 0 0 5px #ff4a4a;
+}
+
+.navbar-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.icon-button:hover {
+  background-color: #ff4a4a;
+  color: white;
+}
+
+.signin-btn {
+  background: linear-gradient(45deg, #ff512f, #dd2476);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 10px rgb(221 36 118 / 0.4);
+  transition: box-shadow 0.3s ease;
+}
+
+.signin-btn:hover {
+  box-shadow: 0 6px 14px rgb(255 81 81 / 0.7);
+}
+.user-dropdown {
+  position: relative;
+}
+
+.user-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.user-name span {
+  max-width: 110px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.user-dropdown-menu {
+  position: absolute;
+  margin-top: 5px;
+  top: 45px;
+  right: 0;
+  background: white;
+  width: 160px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2000;   /* change this */
+}
+
+.user-dropdown-menu a,
+.user-dropdown-menu button {
+  padding: 8px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+.user-dropdown-menu a:hover,
+.user-dropdown-menu button:hover {
+  background: #f5f5f5;
+  border-radius: 5px;
 }
